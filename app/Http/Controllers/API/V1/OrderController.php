@@ -29,4 +29,9 @@ class OrderController extends Controller
         $result = $this->orderInterface->changeStatus($input);
         return response()->json($result);
     }
+
+    public function getFoodHistory()
+    {
+        return $this->orderInterface->getFoodHistory();
+    }
 }

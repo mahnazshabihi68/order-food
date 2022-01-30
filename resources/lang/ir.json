@@ -6,6 +6,7 @@
     "No order found": "سفارش یافت نشد.",
     "Your order to": "سفارش شما تا",
     "Order confirmed": "سفارش تایید شد",
+    "The supplier does not match the food": "تامین کننده با غذا مطابقت ندارد",
     "It is not possible to place an order by the admin": "امکان درج سفارش توسط ادمین وجود ندارد",
     "Order status changed to unconfirmed": "وضعیت سفارش به تایید نشده تغییر یافت",
     "Your order has been successfully registered": "سفارش شما با موفقیت ثبت شد",

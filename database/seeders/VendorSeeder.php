@@ -18,8 +18,8 @@ class VendorSeeder extends Seeder
         DB::table('vendors')->insert(
             [
                 ['title' => 'همایونی', 'preparation_time' => Carbon::now()->format('00:i:s')],
-                ['title' => 'رفتاری', 'preparation_time' =>  Carbon::now()->format('00:i:s')],
                 ['title' => 'تهران سوخاری', 'preparation_time' => Carbon::now()->format('00:i:s')],
+                ['title' => 'رفتاری', 'preparation_time' =>  Carbon::now()->format('00:i:s')],
             ]
         );
     }

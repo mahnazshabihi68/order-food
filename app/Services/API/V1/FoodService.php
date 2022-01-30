@@ -20,34 +20,4 @@ class FoodService implements FoodInterface
 
         return $foods;
     }
-
-    public function getFoodHistory($request): object
-    {
-        $id = $request['food_id'];
-
-        $orders = Order::where('status', 'confirmed')->get();
-
-        $orders->map(function ($order) {
-            $foodIds = $order->foods()->pluck('foods.id')->toArray();
-            if ($order->foods) {
-                $order->status = 'unconfirmed';
-                $order->save();
-            }
-        });
-        $foods = Food::where('id', $id)->whereHas('orders', function ($query) {
-            $query->where('status', 'confirmed');
-        })->with(['orders' => function ($q) {
-            $q->where('status', 'confirmed');
-        }])->get();
-
-        return $foods;
-    }
-
-    public function getUserFoodOrderHistory(): object
-    {
-        $user_id = Auth::id();
-        $orders = Order::whereHas('foods')->with('foods')->where('status', 'confirmed')->where('user_id', $user_id)->get();
-
-        return $orders;
-    }
 }
