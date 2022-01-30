@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(FoodSeeder::class);
         $this->call(VendorSeeder::class);
+        $this->call(LaratrustSeeder::class);
     }
 }

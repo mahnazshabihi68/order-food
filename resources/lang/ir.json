@@ -1,8 +1,14 @@
 {
     "Vendor dont exist": "تامین کننده وجود ندارد.",
     "Food is finished": "غذا تمام شد",
+    "The food is over": "غذا تمام شده است",
     "No food found": "غذا یافت نشد.",
+    "No order found": "سفارش یافت نشد.",
     "Your order to": "سفارش شما تا",
+    "Order confirmed": "سفارش تایید شد",
+    "It is not possible to place an order by the admin": "امکان درج سفارش توسط ادمین وجود ندارد",
+    "Order status changed to unconfirmed": "وضعیت سفارش به تایید نشده تغییر یافت",
     "Your order has been successfully registered": "سفارش شما با موفقیت ثبت شد",
-    "Another will reach you": "دیگر به دست شما خواهد رسید"
+    "Another will reach you": "دیگر به دست شما خواهد رسید",
+    "Only the admin user can change the status of the order.": "تنها کاربر ادمین امکان تغییر وضعیت سفارش را دارد."
 }
