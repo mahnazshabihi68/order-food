@@ -20,14 +20,16 @@ class OrderService implements OrderInterface
 
         if (Auth::user()->hasRole('admin')) return ['message' => __('It is not possible to place an order by the admin'), 'status' => 404];
 
-        $food = Food::where('id', $food_id);
+        $food = Food::with('vendors')->where('id', $food_id);
 
         if (!$food->first()) return ['message' => __('No food found'), 'status' => 404];
         elseif (!$food->where('stock', '>', 0)->first()) return ['message' => __('Food is finished'), 'status' => 404];
 
         $vendor = Vendor::where('id', $vendor_id)->first();
+        $vendorIds = $food->first()->vendors->pluck('id')->toArray();
 
         if (!$vendor) return ['message' => __('Vendor dont exist'), 'status' => 404];
+        elseif(!in_array($vendor_id, $vendorIds)) return ['message' => __('The supplier does not match the food'), 'status' => 404];
 
         $order = new Order;
         $order->vendor_id = $vendor_id;
@@ -35,7 +37,6 @@ class OrderService implements OrderInterface
         $order->status = 'Pending';
         $order->save();
         $order->foods()->attach($food_id);
-
 
         $drive_time = "00:30:00"; // Set default 30 minute - The time of sending food from the restaurant to the user, which is determined based on the lat and long of the user's address.
         $delivery_time = strtotime($drive_time) + strtotime($vendor->preparation_time);
@@ -78,5 +79,13 @@ class OrderService implements OrderInterface
                 return ['message' => __('Order confirmed'), 'status' => 200];
             }
         }
+    }
+
+    public function getFoodHistory(): object
+    {
+        $user_id = Auth::id();
+        $orders = Order::whereHas('foods')->with('foods')->where('status', 'confirmed')->where('user_id', $user_id)->get();
+
+        return $orders;
     }
 }

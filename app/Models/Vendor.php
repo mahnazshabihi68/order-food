@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,4 +13,10 @@ class Vendor extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function foods()
+    {
+        return $this->belongsToMany(Food::class);
+    }
+
 }

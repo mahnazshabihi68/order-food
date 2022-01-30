@@ -8,4 +8,5 @@ interface OrderInterface
 {
     public function create(array $request); 
     public function changeStatus(array $request);
+    public function getFoodHistory(): object;
 }

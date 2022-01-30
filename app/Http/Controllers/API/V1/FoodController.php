@@ -23,10 +23,4 @@ class FoodController extends Controller
         $foods = new FoodCollection($foods);
         return ['foods' => $foods,];
     }
-
-    public function getFoodHistory(FoodHistoryRequest $request)
-    {
-        $input = $request->all();
-        return ($this->foodInterface->getFoodHistory($input));
-    }
 }
