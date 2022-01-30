@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ir',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,8 +165,9 @@ return [
         /*
          * Package Service Providers...
          */
-        App\Providers\API\V1\UserServiceProvider::class,
-
+        App\Providers\UserServiceProvider::class,
+        App\Providers\FoodServiceProvider::class,
+        App\Providers\OrderServiceProvider::class,
         /*
          * Application Service Providers...
          */
