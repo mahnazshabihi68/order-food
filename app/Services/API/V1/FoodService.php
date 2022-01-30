@@ -4,7 +4,8 @@ namespace App\Services\API\V1;
 
 use App\Interfaces\API\V1\FoodInterface;
 use App\Models\Food;
-use App\Models\Vendor;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class FoodService implements FoodInterface
 {
@@ -20,15 +21,33 @@ class FoodService implements FoodInterface
         return $foods;
     }
 
-    public function getHistoryOrders(): object
+    public function getFoodHistory($request): object
     {
-        $foods = Food::whereHas('orders')->with('orders')->get();
+        $id = $request['food_id'];
 
-        // $foods->map(function ($food, $key) use ($foods, $user_id) {
-        //     if ($food->order->user_id == $user_id)
-        //         return $foods->push($foods->splice($key, 1)[0]);
-        // })->all();
+        $orders = Order::where('status', 'confirmed')->get();
+
+        $orders->map(function ($order) {
+            $foodIds = $order->foods()->pluck('foods.id')->toArray();
+            if ($order->foods) {
+                $order->status = 'unconfirmed';
+                $order->save();
+            }
+        });
+        $foods = Food::where('id', $id)->whereHas('orders', function ($query) {
+            $query->where('status', 'confirmed');
+        })->with(['orders' => function ($q) {
+            $q->where('status', 'confirmed');
+        }])->get();
 
         return $foods;
+    }
+
+    public function getUserFoodOrderHistory(): object
+    {
+        $user_id = Auth::id();
+        $orders = Order::whereHas('foods')->with('foods')->where('status', 'confirmed')->where('user_id', $user_id)->get();
+
+        return $orders;
     }
 }

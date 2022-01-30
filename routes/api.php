@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'API\V1'], function () {
     Route::get('menu', [FoodController::class, 'menu']);
+    Route::get('/food/history', [FoodController::class, 'getFoodHistory']);
 
     Route::post('login', [UserController::class, 'login']);
     Route::post('register', [UserController::class, 'register']);

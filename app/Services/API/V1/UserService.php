@@ -16,14 +16,7 @@ class UserService implements UserInterface
      */
     public function checkUser($request)
     {
-        $validation = Validator::make($request, [
-            'email'     => 'required|email',
-            'password'  => 'required',
-        ]);
-
-        if ($validation->fails()) {
-            return ['msg' => json_decode($validation->messages())->email[0], 'status' => '422'];
-        } elseif (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
             $token =  $user->createToken('MyApp')->accessToken;
             return ['token' => $token, "status" => 200];
@@ -39,35 +32,9 @@ class UserService implements UserInterface
      */
     public function createUser($request)
     {
-        $validation = Validator::make($request, [
-            'name'              => 'required',
-            'email'             => 'required|email|unique:users',
-            'password'          => 'required',
-            'cn_password'       => 'required|same:password'
-        ]);
-
-        if ($validation->fails()) {
-            $messages = $this->getErrorsMessages($validation);
-
-            return ['msg' => $messages, 'status' => '422'];
-        } else {
-            $request['password'] = bcrypt($request['password']);
-            $user = User::create($request);
-            return ['email' => $user->email, 'status' => 200];
-        }
-    }
-
-    /**
-     * return Errors Messages
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    function getErrorsMessages($validation)
-    {
-        $messages = array();
-        foreach (json_decode($validation->messages()) as $msg) {
-            array_push($messages, $msg[0]);
-        }
-        return $messages;
+        $request['password'] = bcrypt($request['password']);
+        $user = User::create($request);
+        isset($request['role']) ? $user->attachRole($request['role']) : $user->attachRole('admin');
+        return ['email' => $user->email, 'status' => 200];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\API\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrderStatusRequest extends FormRequest
+class FoodHistoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class OrderStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_id' => 'required|integer'
+            'food_id' => 'required|numeric'
         ];
     }
 }
