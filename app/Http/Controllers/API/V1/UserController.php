@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\V1\UserLoginRequest;
+use App\Http\Requests\API\V1\UserRegisterRequest;
 use App\Interfaces\API\V1\UserInterface;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class UserController extends Controller
         $this->userInterface = $userInterface;
     }
 
-    public function login(Request $request)
+    public function login(UserLoginRequest $request)
     {
         $input = $request->all();
         $result = $this->userInterface->checkUser($input);
@@ -23,7 +25,7 @@ class UserController extends Controller
     }
 
 
-    public function register(Request $request)
+    public function register(UserRegisterRequest $request)
     {
         $input = $request->all();
         $result = $this->userInterface->createUser($input);

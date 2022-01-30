@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Services\API\V1;
+namespace APP\Services\API\V1;
 
 use App\Interfaces\API\V1\UserInterface;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserService implements UserInterface
 {
-    public function checkUser(array $request): array
+    /**
+     * check login user service
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function checkUser($request)
     {
         $validation = Validator::make($request, [
             'email'     => 'required|email',
@@ -21,18 +26,24 @@ class UserService implements UserInterface
         } elseif (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
             $token =  $user->createToken('MyApp')->accessToken;
-            return ['token' => $token->token, "status" => 200];
+            return ['token' => $token, "status" => 200];
         } else {
             return ['error' => 'Unauthorised', 'status' => 401];
         }
     }
 
-    public function createUser(array $request): array
+    /**
+     * signUp user service
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function createUser($request)
     {
         $validation = Validator::make($request, [
             'name'              => 'required',
             'email'             => 'required|email|unique:users',
-            'password'          => 'required'
+            'password'          => 'required',
+            'cn_password'       => 'required|same:password'
         ]);
 
         if ($validation->fails()) {
@@ -42,11 +53,15 @@ class UserService implements UserInterface
         } else {
             $request['password'] = bcrypt($request['password']);
             $user = User::create($request);
-            $token =  $user->createToken('MyApp')->accessToken;
-            return ['name' => $user->name, 'status' => 200];
+            return ['email' => $user->email, 'status' => 200];
         }
     }
 
+    /**
+     * return Errors Messages
+     * 
+     * @return \Illuminate\Http\Response
+     */
     function getErrorsMessages($validation)
     {
         $messages = array();

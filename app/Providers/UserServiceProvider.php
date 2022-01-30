@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers\API\V1;
+namespace App\Providers;
 
 use App\Interfaces\API\V1\UserInterface;
 use App\Services\API\V1\UserService;

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\V1\FoodController;
+use App\Http\Controllers\API\V1\OrderController;
 use App\Http\Controllers\API\V1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => 'v1', 'namespace' => 'API\V1'], function () {
+    Route::get('menu', [FoodController::class, 'menu']);
+
     Route::post('login', [UserController::class, 'login']);
     Route::post('register', [UserController::class, 'register']);
+   
+    Route::post('order', [OrderController::class, 'store']);
+    Route::post('change/status', [OrderController::class, 'changeStatus']);
 });
