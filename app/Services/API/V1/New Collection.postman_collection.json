@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "f7141d46-e6f2-4ae4-b435-699ba6700d50",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/api/v1/menu",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOTE0YTc0M2E3ODEyYTlmZDIyYWZkNTQ4NmYzYjI2MjQ1M2MxM2JkZmM5MTczZmVhM2JjOGYyYWFjNzA0YzAzYzcxNjc1MTc0Y2IzZWI2YzMiLCJpYXQiOjE2NDM1NTI4MTIuNTA0MTQ2LCJuYmYiOjE2NDM1NTI4MTIuNTA0MTUyLCJleHAiOjE2NzUwODg4MTIuMjA4OTg0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.Ufcrbw1Yn4cBXcTbBgLNN8WAK_9-B1vIDtl-NTqu_ziKXvGAPhHHcYrCxnQr6o1wXYIkVUiMpaCLL8ZL0sBdFM76tQ7W4TupqWD5cm2ccMXqE5TuVCIXbKJa8I6ECmwOHTfUnnQbb6-uOWzg4N28eMxbcRXw6MYzem6uFmZy7nOaJMdihZwQm6PQQQ9dU00qWGrhjjMYre6dj3PNy1N-9R1b4NHYDEBQ3I5dyfOojTorxX0xx4707hwxG0VrruJ86jUHwa0HGB2igrMJrehSPIyqltaqxadFNiPQ1SSOrWUYreb7rmgnh4ZAIlHzevpEsRHM7T8jpDkEZOEUT3l4ZhlPt6N0CjFXD6zxA2fr-LnhhEEWayqC4euvr1pBY9rgRKELy_xHVJKZoR-XxPXwxJNBBGlwfe1kUG9IgG0PsClZfTZZyj9zOmj_katOq8riorFTvZFz4gnZ5qWYih2B5E1tEoPIzGPGGEVlYdwEKkgbAM9_r1g7cC6qjpNc8EjxD1X8huQe_EXBPaMukKSNqgQ1kt_QIMwvB8INtgpnfWMioQclxOEdKAaOKpDXQunNbC-x3U1Cg8DwLK1CVs2N5YnkPF_fr0riQiXDe3z1EV39LegAAYsY8PBqmPZ61HDaNHX0i_dwwDHJ3brKusy4xcLOJSsu9XbsunoYCzRFJPI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/v1/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"admin@gmail.com\",\n    \"password\" : \"123456\",\n    \"role\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/v1/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"info@gmail.com\",\n    \"password\" : \"123456\",\n    \"role\": \"user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				},
+				"description": "register with role user"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/v1/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"info@gmail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/v1/order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTAyOTk3YjIyNTY4ZGNkNmFhZDljYWEyYzRkYTUxY2EwNGNiOTBmZjgwZWYwYTRiMmI3NWUxYzk2MzQ1Y2RmYmI4NTY3NDU1NTYxMTU4OGQiLCJpYXQiOjE2NDM2MDk0MzEuNjczMDc3LCJuYmYiOjE2NDM2MDk0MzEuNjczMDg3LCJleHAiOjE2NzUxNDU0MzEuNjE0ODQyLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.K_oBc2lX7LDqQ3z5jUK6Uxi1gyDdoGoj0h6VENbBiwOfluWDbOpXggFdGPnnM3oDJt9a4GGo3ETJWd_56lfmPyEaomQ-o6fgl1I9PsEAmQApgXsFqxSn2N7S9WOY1jFibQXTTNwdumkd4qz_fdWjIFeeiME6BxWpiG0o1QeWhNRtfIRSUWM4o7SGdXA-_QVlppITSzyz-QyMUMbRtkR95sfM2VtIupbLExP84cFgc-Q5EncapAtTV5ZRckarLddDR0auZERapFdYy94EDB9qcqsMQs6nn1a5co8xdFA2ONTyFe-fbowulJurvlemLiGnsksltvLtK4jWCvbkkNKBLNTQYxVWsp0le2SxMGWSIjncSaU-RVbBMsYra-XvWQA2iFsPWV2aRsugqtniH_Ss89-R9po3gnDDXGgulaxNwoLd8Rt4Uhiar9URBtdlkR9XxSfMEro32h41NdNX9rtgR5W8pfLhWINDXidokijevCz_o56iToKeyrgSO4ldx4viWwUjYWsHGWNjuqnoqDxy4CAX_Oq1iO1EKbOlmFhpUIb9epJmBl-eqmXKksPw5-HOCu1kDM8FJ3qi2_rXxsr5BE68w_Flx2qEWzfLy9Mv5xkXyefGr87MG_2929K35nbFeK5SLeBiPC2CinyRTuqLO8SRPQmjVogZkTuOZ-A62wE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"food_ids\" : [1, 2, 3],\n    \"vendor_id\" : 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/order",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/v1/change/status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjQxYjI4N2E4YTRkODdhODJjMDdmMjAzMjY2YzJiNjNiMWYyZWRjMmZkODYyNDg5YmE2MmI2MWYzOTFhOTQwNDE2YjIwNDM0MzQ0YmQ5M2MiLCJpYXQiOjE2NDM2MTAxNzEuNTEyNjExLCJuYmYiOjE2NDM2MTAxNzEuNTEyNjE5LCJleHAiOjE2NzUxNDYxNzEuNDA0NDU5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.oxVJO9XTImjD998iPDi0QslQvlL6POMe5LPwU2U7fOsEoAjP91rFIeyAvXkPx6ijTGTxkBZvRA17aNebi-RK4xFBoKj3Lu2fkgV0KtOTT16ngpv2Uu4K5GcfCMrS4vaxWrRX4rMjopDodPiAJPcgmTQq5I0fHlLneYS2BFn-cVh11tHYow3XGLus28qHIUAX1gaSWZvDXlgdrZU2g_roy1P7D_V-a_bsXC1YaxqKPPVqac8SH_gDsz-LpmrSCGxDpkD6_Px7kEs36NdaV_BkmED5kNfDUeRnPty4m8QGKM202NiJXv0dWlTIzTAOzHRkfQ88L1z7xqKNsHTYAmSYjiXbAEci4WzvQ2ZmWJ1L87cYjYPjrfRDkVqCfp3FtA_8GtK3ihTDWGrIhWYseFueRkQrLFRTKM9LFiU2920Kmy0tqaKwXanQZFOlmOvXu4giHcWFX4Hv6sFQIFKcwxinDaXO6eC2cjuNcv-doK24bXSsIA-ELi2wtn4IdlOAN-Gq0dIw4XKn-u8w5K7A5zNLl5LCjAG7aXeY_vNVvD36HZVZ7MEtzBE87OcQCAgBl9tA52EyFEJxTbIUZNziWcoGdJ5JTP-NJhRaJF98yYb1kS2EEDiTa3LSsotM-9xcEWFKEpbHgfGhzCPQZ5ljXFC4E8a5POHu0bDC6HA5onxj678",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"order_id\" : 2,\n    \"status\": \"confirmed\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/change/status",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"change",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/api/v1/user/food/history",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDU5YzgxZWQwYjcxNGExNTMwYzJmMTZjNTMyMTZkZDA3YWI2M2M2Nzg0NDk3ZjJhZWMzY2NkNDkzMDNjZTc3NDZjZWQ4NDU2MjA0NjBjNGIiLCJpYXQiOjE2NDM2MTAyODMuNzA4MjE3LCJuYmYiOjE2NDM2MTAyODMuNzA4MjIzLCJleHAiOjE2NzUxNDYyODMuNTY3OTAxLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.x9LtCi1Zq_dW0CRSe5s4fuA6n-varueVfleAQxxSzfiLjUqHWYzTwZGTbn1t7nnnk-RyQKmw55aBzHfQoJXSguYNtkS26ZUGDfVmZWEkooQoRDD4AiEFX964HJz-Y_7-Ld08NFzl9GqTHXmYWU55qGHXbq-Oh_LoJ4xmGJrkXvsnoUtrEWK62yc52DVKAjnOqOCDWRtuvOO2Q1BpHpmdRUTXQZah_VgbhJf6JCZEVuko2TATTrKJ5ZxywZArvxH25ED30925pYFtbp0cbCBCBphcYNSKjGlyZMmoCTRSDRnfEbXzZFo0jLE3YSuPMjAjHVuoRp6nqZYG54i1UetgPDhIB1KYo3M5dpb8kw-8FfMsheVQmb3MpaIT8lHKUMxA1c_owPwyHLjo8ob-A3fs98rwMxP5-n7hLQ52a8QmM793AX8kIU3ad0a77MobxdmO4xeJ-70opexvh8r290zzw29MhrvnPSqiveVpp8Wsce7pfPhiYCyK5DY-iwgedBDtyWuvbK5dCKiXEm-vkFq-bTnDr47jEc3-hH5GfiuqcEu-sKDjCqaUzwHJHdAWxkxhCa412epMXAW8GY_dMYHEQ3DE6CuKu35SGEBaedryWZa0F0tKL6f8Wpmkvb07pmp5fPJmeiEDusENcF2oHK4qaeK-W0K8v1EfSEVwxvYykno",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/api/v1/user/food/history",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"food",
+						"history"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
