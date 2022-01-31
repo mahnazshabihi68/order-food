@@ -33,12 +33,21 @@ class OrderService implements OrderInterface
             elseif (!in_array($vendor_id, $vendorIds)) return ['message' => __('The supplier does not match the food'), 'status' => 404];
         }
 
-        $order = new Order;
-        $order->vendor_id = $vendor_id;
-        $order->user_id = $user_id;
-        $order->status = 'Pending';
-        $order->save();
-        $order->foods()->attach($foodIds);
+
+        DB::transaction(function () use ($foodIds, $vendor_id, $user_id) {
+            $order = new Order;
+            $order->vendor_id = $vendor_id;
+            $order->user_id = $user_id;
+            $order->status = 'Pending';
+            $order->save();
+            $order->foods()->attach($foodIds);
+
+            $order->foods->map(function ($food) {
+                $food_id = $food->id;
+                DB::table('foods')->where('id', $food_id)->decrement('stock');
+            });
+        });
+
 
         $drive_time = "00:30:00"; // Set default 30 minute - The time of sending food from the restaurant to the user, which is determined based on the lat and long of the user's address.
         $delivery_time = strtotime($drive_time) + strtotime($vendor->preparation_time);
@@ -57,7 +66,7 @@ class OrderService implements OrderInterface
 
         if (!Auth::user()->hasRole('admin')) return ['message' => __('Only the admin user can change the status of the order.'), 'status' => 404];
 
-        if ($order->status == 'pending') {
+        if ($order->status == 'Pending') {
             if ($status == 'unconfirmed') {
                 $order->status = 'unconfirmed';
                 $order->save();
@@ -73,13 +82,8 @@ class OrderService implements OrderInterface
 
                 if ($order->status == 'unconfirmed') return ['message' => __('The food is over'), 'status' => 404];
                 else {
-                    $foods->map(function ($food) use ($order) {
-                        $food_id = $food->id;
-
-                        DB::transaction(function () use ($food_id, $order) {
-                            DB::table('foods')->where('id', $food_id)->decrement('stock');
-                            DB::table('orders')->where('id', $order->id)->update(array('status' => 'confirmed', 'updated_at' => now()));
-                        });
+                    $foods->map(function () use ($order) {
+                        DB::table('orders')->where('id', $order->id)->update(array('status' => 'confirmed', 'updated_at' => now()));
                     });
 
                     return ['message' => __('Order confirmed'), 'status' => 200];

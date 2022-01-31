@@ -25,5 +25,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'API\V1'], function () {
    
     Route::post('order', [OrderController::class, 'store']);
     Route::post('change/status', [OrderController::class, 'changeStatus']);
-    Route::get('/user/food/history', [OrderController::class, 'getFoodHistory']);
+    Route::post('/user/food/history', [OrderController::class, 'getFoodHistory']);
 });
