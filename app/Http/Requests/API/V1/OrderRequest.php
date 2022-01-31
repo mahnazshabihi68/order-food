@@ -24,7 +24,7 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'food_id'    => 'required|numeric',
+            'food_ids'    => 'required|array',
             'vendor_id'  => 'required|numeric'
         ];
     }
